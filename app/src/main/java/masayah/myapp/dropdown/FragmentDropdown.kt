@@ -33,26 +33,24 @@ class FragmentDropdown : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_dropdown, container, false)
 
-        val dropdown : AutoCompleteTextView = view?.findViewById(R.id.dropdown_item)!!
+        val dropdown : AutoCompleteTextView = view.findViewById(R.id.dropdown_item)
 
         // ドロップダウンがフォーカスを受けたらキーボードを隠す
-        dropdown.setOnFocusChangeListener(
-            (View.OnFocusChangeListener { v, hasFocus ->
-                if (hasFocus) KeyboardUtils.hideKeyboard(v)
-            })
-        )
+        dropdown.onFocusChangeListener = (View.OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) KeyboardUtils.hideKeyboard(v)
+        })
 
         // ドロップダウンへプログラムから値をセットするサンプル
-        val button_set_dropdown : Button = view.findViewById(R.id.button_set_dropdown)
-        button_set_dropdown.setOnClickListener() {
+        val buttonSetDropdown : Button = view.findViewById(R.id.button_set_dropdown)
+        buttonSetDropdown.setOnClickListener {
             // サンプルなので固定で「洋食」をセット。
             // 本来はDBからの取得値などで値をセット。
             setDropdownSelection(requireContext(), dropdown, "洋食")
         }
 
         // ドロップダウンの現在値をプログラムで取得するサンプル
-        val button_get_dropdown : Button = view.findViewById(R.id.button_get_dropdown)
-        button_get_dropdown.setOnClickListener() {
+        val buttonGetDropdown : Button = view.findViewById(R.id.button_get_dropdown)
+        buttonGetDropdown.setOnClickListener {
             val textView : TextView = view.findViewById(R.id.dropdown_get_textview)
             textView.text = dropdown.text.toString()
         }
