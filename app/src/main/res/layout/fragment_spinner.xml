@@ -90,11 +90,23 @@
             android:text="「洋食」をセット"
             />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/regular_get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/regular_set"
+        >
         <Button
             android:id="@+id/button_get_regular"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
             android:gravity="center_vertical"
             android:text="現在値を取得"
             />
