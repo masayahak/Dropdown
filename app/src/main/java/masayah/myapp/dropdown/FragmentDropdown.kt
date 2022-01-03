@@ -25,6 +25,15 @@ class FragmentDropdown : Fragment() {
 
     }
 
+    // ドロップダウンの初期設定
+    private fun initDropdown(dropdown: AutoCompleteTextView) {
+        // 「R.array.foodType_array」は「values/array.xml」で定義
+        val foodTypes = resources.getStringArray(R.array.foodType_array)
+        // 「R.layout.dropdown_item」は「vlayout/dropdown_item.xml」で定義
+        val arrayAdapter = ArrayAdapter(dropdown.rootView.context, R.layout.dropdown_item, foodTypes)
+        dropdown.setAdapter(arrayAdapter)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,15 +64,6 @@ class FragmentDropdown : Fragment() {
         }
 
         return view
-    }
-
-    // ドロップダウンの初期設定
-    private fun initDropdown(dropdown: AutoCompleteTextView) {
-        // 「R.array.foodType_array」は「values/array.xml」で定義
-        val foodTypes = resources.getStringArray(R.array.foodType_array)
-        // 「R.layout.dropdown_item」は「vlayout/dropdown_item.xml」で定義
-        val arrayAdapter = ArrayAdapter(dropdown.rootView.context, R.layout.dropdown_item, foodTypes)
-        dropdown.setAdapter(arrayAdapter)
     }
 
     // 特定の値をドロップダウンにセット
